@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.todotracer.ToDo
 import com.example.todotracer.databinding.FragmentMainBinding
 import java.time.LocalDate
@@ -24,7 +25,7 @@ class MainFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         // TODO: Use the ViewModel
     }
 
@@ -36,14 +37,21 @@ class MainFragment : Fragment() {
     ): View {
         binding = FragmentMainBinding.inflate(inflater, container, false)
         val btnOne = binding.btnOne
-        val name = binding.tvName
-        val desc = binding.tvDesc
-
+        val recyclerView = binding.recyclerView
+        val dataSet = arrayListOf(
+            ToDo("Clean kitchen", "i really should do that", "Chores", LocalDate.now(), "Medium"),
+            ToDo("Read a book", "that will be relaxin", "Chill", LocalDate.now(), "High"),
+            ToDo("Sleep more", "if I don' sleep enough that is not good", "MUST!!", LocalDate.now(), "Critical")
+        )
+        val adapter = ToDoAdapter(dataSet)
+        recyclerView.adapter = adapter
+        recyclerView.setHasFixedSize(true)
+        recyclerView.layoutManager = LinearLayoutManager(context)
 
 
         btnOne.setOnClickListener {
-            val toDO = ToDo("1", "1", "1", LocalDate.now(),"high")
-            name.text = toDO.name
+            dataSet.add(ToDo("Code even more", "Coding is fun :) ", "Chill", LocalDate.now(), "medium"))
+            adapter.notifyItemInserted(dataSet.size)
         }
         return binding.root
     }

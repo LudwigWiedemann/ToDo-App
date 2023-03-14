@@ -14,15 +14,6 @@
         android:layout_height="match_parent"
         tools:context=".ui.main.MainFragment">
 
-        <TextView
-            android:id="@+id/tv_desc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="description"
-            app:layout_constraintEnd_toEndOf="@+id/tv_name"
-            app:layout_constraintStart_toStartOf="@+id/tv_name"
-            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
-
         <Button
             android:id="@+id/btn_one"
             android:layout_width="wrap_content"
@@ -30,45 +21,22 @@
             android:layout_marginBottom="145dp"
             android:text="Button"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/tv_crit"
-            app:layout_constraintStart_toStartOf="@+id/tv_crit" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
 
-        <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:text="name"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="1dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_one"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_cat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="category"
-            app:layout_constraintEnd_toEndOf="@+id/tv_desc"
-            app:layout_constraintStart_toStartOf="@+id/tv_desc"
-            app:layout_constraintTop_toBottomOf="@+id/tv_desc" />
-
-        <TextView
-            android:id="@+id/tv_due"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="due date"
-            app:layout_constraintEnd_toEndOf="@+id/tv_cat"
-            app:layout_constraintStart_toStartOf="@+id/tv_cat"
-            app:layout_constraintTop_toBottomOf="@+id/tv_cat" />
-
-        <TextView
-            android:id="@+id/tv_crit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="urgency"
-            app:layout_constraintEnd_toEndOf="@+id/tv_due"
-            app:layout_constraintStart_toStartOf="@+id/tv_due"
-            app:layout_constraintTop_toBottomOf="@+id/tv_due" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
